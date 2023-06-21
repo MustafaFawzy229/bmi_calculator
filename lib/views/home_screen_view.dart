@@ -132,8 +132,8 @@ class HomeScreen extends StatelessWidget {
                     const SizedBox(height: 5),
                     Slider(
                         value: 120,
-                        min: 50,
-                        max: 250,
+                        min: 40,
+                        max: 240,
                         activeColor: const Color(0xffe6015e),
                         onChanged: (value) {
                           print(value.round());
