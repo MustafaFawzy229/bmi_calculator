@@ -14,6 +14,7 @@ class HomeScreen extends StatelessWidget {
       body: Column(
         children: [
           Expanded(
+            flex: 4,
             child: Padding(
               padding: const EdgeInsets.all(20.0),
               child: Row(
@@ -82,6 +83,7 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
           Expanded(
+            flex: 4,
             child: Padding(
               padding: const EdgeInsets.symmetric(
                 horizontal: 20,
@@ -144,9 +146,114 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
           Expanded(
-            child: Container(
-              color: Colors.blue,
-              width: double.infinity,
+            flex: 5,
+            child: Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: const Color(0xff252a48),
+                        borderRadius: BorderRadius.circular(16),
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Text(
+                            'WEIGHT',
+                            style: TextStyle(
+                              fontSize: 22,
+                              fontWeight: FontWeight.bold,
+                              color: Color(0xffb0b6d2),
+                            ),
+                          ),
+                          const SizedBox(height: 10),
+                          const Text(
+                            '185',
+                            style: TextStyle(
+                              fontSize: 35,
+                              fontWeight: FontWeight.w900,
+                              color: Colors.white,
+                            ),
+                          ),
+                          const SizedBox(height: 12),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              FloatingActionButton(
+                                mini: true,
+                                onPressed: () {},
+                                backgroundColor: const Color(0xff0d1232),
+                                child: const Icon(Icons.add),
+                              ),
+                              const SizedBox(width: 10),
+                              FloatingActionButton(
+                                mini: true,
+                                onPressed: () {},
+                                backgroundColor: const Color(0xff0d1232),
+                                child: const Icon(Icons.remove),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    width: 20,
+                  ),
+                  Expanded(
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: const Color(0xff252a48),
+                        borderRadius: BorderRadius.circular(16),
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Text(
+                            'AGE',
+                            style: TextStyle(
+                              fontSize: 22,
+                              fontWeight: FontWeight.bold,
+                              color: Color(0xffb0b6d2),
+                            ),
+                          ),
+                          const SizedBox(height: 10),
+                          const Text(
+                            '185',
+                            style: TextStyle(
+                              fontSize: 35,
+                              fontWeight: FontWeight.w900,
+                              color: Colors.white,
+                            ),
+                          ),
+                          const SizedBox(height: 12),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              FloatingActionButton(
+                                mini: true,
+                                onPressed: () {},
+                                backgroundColor: const Color(0xff0d1232),
+                                child: const Icon(Icons.add),
+                              ),
+                              const SizedBox(width: 10),
+                              FloatingActionButton(
+                                mini: true,
+                                onPressed: () {},
+                                backgroundColor: const Color(0xff0d1232),
+                                child: const Icon(Icons.remove),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
           Container(
