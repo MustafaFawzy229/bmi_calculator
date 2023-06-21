@@ -82,9 +82,65 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
           Expanded(
-            child: Container(
-              color: Colors.green,
-              width: double.infinity,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 20,
+              ),
+              child: Container(
+                decoration: BoxDecoration(
+                  color: const Color(0xff252a48),
+                  borderRadius: BorderRadius.circular(14),
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text(
+                      'HEIGHT',
+                      style: TextStyle(
+                        fontSize: 22,
+                        fontWeight: FontWeight.bold,
+                        color: Color(0xffb0b6d2),
+                      ),
+                    ),
+                    const SizedBox(height: 10),
+                    const Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.baseline,
+                      textBaseline: TextBaseline.alphabetic,
+                      children: [
+                        Text(
+                          '185',
+                          style: TextStyle(
+                            fontSize: 40,
+                            fontWeight: FontWeight.w900,
+                            color: Colors.white,
+                          ),
+                        ),
+                        SizedBox(
+                          width: 5,
+                        ),
+                        Text(
+                          'CM',
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 5),
+                    Slider(
+                        value: 120,
+                        min: 50,
+                        max: 250,
+                        activeColor: const Color(0xffe6015e),
+                        onChanged: (value) {
+                          print(value.round());
+                        })
+                  ],
+                ),
+              ),
             ),
           ),
           Expanded(
