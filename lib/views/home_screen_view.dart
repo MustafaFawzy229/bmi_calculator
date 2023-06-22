@@ -1,3 +1,4 @@
+import 'package:bmi_calculator/views/bmi_result_view.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -6,6 +7,11 @@ class HomeScreen extends StatefulWidget {
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
+
+String text = "";
+Color textColor = Colors.white;
+double bmi = 0;
+String weightStatus = "";
 
 bool? isMale;
 double height = 50;
@@ -223,6 +229,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     weight++;
                                   });
                                 },
+                                heroTag: 'Weight+',
                                 backgroundColor: const Color(0xff0d1232),
                                 child: const Icon(Icons.add),
                               ),
@@ -234,6 +241,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     weight--;
                                   });
                                 },
+                                heroTag: 'Weight-',
                                 backgroundColor: const Color(0xff0d1232),
                                 child: const Icon(Icons.remove),
                               ),
@@ -283,6 +291,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     age++;
                                   });
                                 },
+                                heroTag: 'Age+',
                                 backgroundColor: const Color(0xff0d1232),
                                 child: const Icon(Icons.add),
                               ),
@@ -294,6 +303,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     age--;
                                   });
                                 },
+                                heroTag: 'Age-',
                                 backgroundColor: const Color(0xff0d1232),
                                 child: const Icon(Icons.remove),
                               ),
@@ -314,7 +324,40 @@ class _HomeScreenState extends State<HomeScreen> {
                 horizontal: 16,
               ),
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  setState(() {
+                    if (isMale != null && weight != 0 && age != 0) {
+                      double heightInMeter = height / 100;
+                      bmi = weight / (heightInMeter * heightInMeter);
+                      if (bmi < 18.5) {
+                        weightStatus = "Underweight";
+                        textColor = Colors.yellowAccent;
+                        text = "Your Weight is too low eat some health food.";
+                      } else if (bmi > 18.5 && bmi < 24.9) {
+                        weightStatus = "	Healthy Weight";
+                        text = "You have a healthy body weight good job.";
+                        textColor = Colors.green;
+                      } else if (bmi > 25.0 && bmi < 29.9) {
+                        weightStatus = "	Overweight";
+                        textColor = Colors.orangeAccent;
+                        text = "Your body id overweight keep doing workout.";
+                      } else {
+                        weightStatus = "Obesity";
+                        textColor = Colors.redAccent;
+                        text = "Your weight is too heavy go to GYM.";
+                      }
+
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                        return bmiResultView(
+                            text: text,
+                            textColor: textColor,
+                            bmi: bmi,
+                            weightStatus: weightStatus);
+                      }));
+                    }
+                  });
+                },
                 style: ElevatedButton.styleFrom(
                   elevation: 0,
                   fixedSize: Size(MediaQuery.of(context).size.width,
