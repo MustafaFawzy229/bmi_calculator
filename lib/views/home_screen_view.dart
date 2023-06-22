@@ -374,7 +374,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             bmi: bmi,
                             weightStatus: weightStatus);
                       }));
-                    }
+                    } else {}
                   });
                 },
                 style: ElevatedButton.styleFrom(
