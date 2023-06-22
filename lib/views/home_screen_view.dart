@@ -1,8 +1,18 @@
 import 'package:flutter/material.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+bool? isMale;
+double height = 50;
+int age = 0;
+int weight = 0;
+
+class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,30 +31,41 @@ class HomeScreen extends StatelessWidget {
               child: Row(
                 children: [
                   Expanded(
-                    child: Container(
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(12),
-                          color: const Color(0xff252a48)),
-                      child: const Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(
-                            Icons.male,
-                            size: 75,
-                            color: Color(0xffb0b6d2),
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Text(
-                            'MALE',
-                            style: TextStyle(
-                              fontSize: 25,
-                              fontWeight: FontWeight.bold,
-                              color: Color(0xffb0b6d2),
+                    child: GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          isMale = true;
+                        });
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(12),
+                            color: const Color(0xff252a48)),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(
+                              Icons.male,
+                              size: 75,
+                              color: isMale == true
+                                  ? const Color(0xffe6015e)
+                                  : const Color(0xffb0b6d2),
                             ),
-                          ),
-                        ],
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            Text(
+                              'MALE',
+                              style: TextStyle(
+                                fontSize: 25,
+                                fontWeight: FontWeight.bold,
+                                color: isMale == true
+                                    ? const Color(0xffe6015e)
+                                    : const Color(0xffb0b6d2),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),
@@ -52,30 +73,41 @@ class HomeScreen extends StatelessWidget {
                     width: 20,
                   ),
                   Expanded(
-                    child: Container(
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(16),
-                          color: const Color(0xff252a48)),
-                      child: const Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(
-                            Icons.female,
-                            size: 75,
-                            color: Color(0xffb0b6d2),
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Text(
-                            'FEMALE',
-                            style: TextStyle(
-                              fontSize: 25,
-                              fontWeight: FontWeight.bold,
-                              color: Color(0xffb0b6d2),
+                    child: GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          isMale = false;
+                        });
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(16),
+                            color: const Color(0xff252a48)),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(
+                              Icons.female,
+                              size: 75,
+                              color: isMale == false
+                                  ? const Color(0xffe6015e)
+                                  : const Color(0xffb0b6d2),
                             ),
-                          ),
-                        ],
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            Text(
+                              'FEMALE',
+                              style: TextStyle(
+                                fontSize: 25,
+                                fontWeight: FontWeight.bold,
+                                color: isMale == false
+                                    ? const Color(0xffe6015e)
+                                    : const Color(0xffb0b6d2),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),
@@ -106,23 +138,23 @@ class HomeScreen extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 10),
-                    const Row(
+                    Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.baseline,
                       textBaseline: TextBaseline.alphabetic,
                       children: [
                         Text(
-                          '185',
-                          style: TextStyle(
+                          height.toInt().toString(),
+                          style: const TextStyle(
                             fontSize: 40,
                             fontWeight: FontWeight.w900,
                             color: Colors.white,
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 5,
                         ),
-                        Text(
+                        const Text(
                           'CM',
                           style: TextStyle(
                             fontSize: 20,
@@ -134,12 +166,14 @@ class HomeScreen extends StatelessWidget {
                     ),
                     const SizedBox(height: 5),
                     Slider(
-                        value: 120,
+                        value: height!,
                         min: 40,
                         max: 240,
                         activeColor: const Color(0xffe6015e),
                         onChanged: (value) {
-                          print(value.round());
+                          setState(() {
+                            height = value;
+                          });
                         })
                   ],
                 ),
@@ -170,9 +204,9 @@ class HomeScreen extends StatelessWidget {
                             ),
                           ),
                           const SizedBox(height: 10),
-                          const Text(
-                            '185',
-                            style: TextStyle(
+                          Text(
+                            weight.toString(),
+                            style: const TextStyle(
                               fontSize: 35,
                               fontWeight: FontWeight.w900,
                               color: Colors.white,
@@ -184,14 +218,22 @@ class HomeScreen extends StatelessWidget {
                             children: [
                               FloatingActionButton(
                                 mini: true,
-                                onPressed: () {},
+                                onPressed: () {
+                                  setState(() {
+                                    weight++;
+                                  });
+                                },
                                 backgroundColor: const Color(0xff0d1232),
                                 child: const Icon(Icons.add),
                               ),
                               const SizedBox(width: 10),
                               FloatingActionButton(
                                 mini: true,
-                                onPressed: () {},
+                                onPressed: () {
+                                  setState(() {
+                                    weight--;
+                                  });
+                                },
                                 backgroundColor: const Color(0xff0d1232),
                                 child: const Icon(Icons.remove),
                               ),
@@ -222,9 +264,9 @@ class HomeScreen extends StatelessWidget {
                             ),
                           ),
                           const SizedBox(height: 10),
-                          const Text(
-                            '185',
-                            style: TextStyle(
+                          Text(
+                            age.toString(),
+                            style: const TextStyle(
                               fontSize: 35,
                               fontWeight: FontWeight.w900,
                               color: Colors.white,
@@ -236,14 +278,22 @@ class HomeScreen extends StatelessWidget {
                             children: [
                               FloatingActionButton(
                                 mini: true,
-                                onPressed: () {},
+                                onPressed: () {
+                                  setState(() {
+                                    age++;
+                                  });
+                                },
                                 backgroundColor: const Color(0xff0d1232),
                                 child: const Icon(Icons.add),
                               ),
                               const SizedBox(width: 10),
                               FloatingActionButton(
                                 mini: true,
-                                onPressed: () {},
+                                onPressed: () {
+                                  setState(() {
+                                    age--;
+                                  });
+                                },
                                 backgroundColor: const Color(0xff0d1232),
                                 child: const Icon(Icons.remove),
                               ),
