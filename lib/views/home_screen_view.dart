@@ -6,6 +6,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xff0d1232),
       appBar: AppBar(
         title: const Text('BMI CALCULATOR'),
         backgroundColor: const Color(0xff0d1232),
@@ -29,11 +30,11 @@ class HomeScreen extends StatelessWidget {
                         children: [
                           Icon(
                             Icons.male,
-                            size: 70,
+                            size: 75,
                             color: Color(0xffb0b6d2),
                           ),
                           SizedBox(
-                            height: 15,
+                            height: 10,
                           ),
                           Text(
                             'MALE',
@@ -60,11 +61,11 @@ class HomeScreen extends StatelessWidget {
                         children: [
                           Icon(
                             Icons.female,
-                            size: 70,
+                            size: 75,
                             color: Color(0xffb0b6d2),
                           ),
                           SizedBox(
-                            height: 15,
+                            height: 10,
                           ),
                           Text(
                             'FEMALE',
@@ -285,7 +286,6 @@ class HomeScreen extends StatelessWidget {
           ),
         ],
       ),
-      backgroundColor: const Color(0xff0d1232),
     );
   }
 }
