@@ -374,7 +374,11 @@ class _HomeScreenState extends State<HomeScreen> {
                             bmi: bmi,
                             weightStatus: weightStatus);
                       }));
-                    } else {}
+                    } else {
+                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                        content: Text('Please fill all inputs'),
+                      ));
+                    }
                   });
                 },
                 style: ElevatedButton.styleFrom(
