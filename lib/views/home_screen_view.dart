@@ -14,7 +14,7 @@ class HomeScreen extends StatelessWidget {
       body: Column(
         children: [
           Expanded(
-            flex: 4,
+            flex: 10,
             child: Padding(
               padding: const EdgeInsets.all(20.0),
               child: Row(
@@ -83,7 +83,7 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
           Expanded(
-            flex: 4,
+            flex: 12,
             child: Padding(
               padding: const EdgeInsets.symmetric(
                 horizontal: 20,
@@ -146,7 +146,7 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
           Expanded(
-            flex: 5,
+            flex: 12,
             child: Padding(
               padding: const EdgeInsets.all(20.0),
               child: Row(
@@ -256,20 +256,36 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
           ),
-          Container(
-            color: Color(0xffe6015e),
-            width: double.infinity,
-            child: MaterialButton(
-              onPressed: () {},
-              height: 50,
-              child: Text(
-                'Check Your BMI',
-                style: TextStyle(color: Colors.white),
+          Expanded(
+            flex: 3,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 16,
+              ),
+              child: ElevatedButton(
+                onPressed: () {},
+                style: ElevatedButton.styleFrom(
+                  elevation: 0,
+                  fixedSize: Size(MediaQuery.of(context).size.width,
+                      MediaQuery.of(context).size.height),
+                  backgroundColor: const Color(0xffe6015e),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                ),
+                child: const Text(
+                  "Check Your BMI",
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 22,
+                      fontWeight: FontWeight.w500),
+                ),
               ),
             ),
           ),
         ],
       ),
+      backgroundColor: const Color(0xff0d1232),
     );
   }
 }
