@@ -10,7 +10,7 @@ class HomeScreen extends StatefulWidget {
 bool? isMale;
 double height = 50;
 int age = 0;
-int weight = 0;
+int weight = 40;
 
 class _HomeScreenState extends State<HomeScreen> {
   @override
@@ -166,7 +166,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     const SizedBox(height: 5),
                     Slider(
-                        value: height!,
+                        value: height,
                         min: 40,
                         max: 240,
                         activeColor: const Color(0xffe6015e),
