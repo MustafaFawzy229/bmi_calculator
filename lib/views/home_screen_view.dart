@@ -27,6 +27,25 @@ class _HomeScreenState extends State<HomeScreen> {
         title: const Text('BMI CALCULATOR'),
         backgroundColor: const Color(0xff0d1232),
         elevation: 0,
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 10),
+            child: IconButton(
+              onPressed: () {
+                setState(() {
+                  height = 50;
+                  weight = 40;
+                  age = 0;
+                  isMale = null;
+                });
+              },
+              icon: const Icon(
+                Icons.refresh,
+                size: 32,
+              ),
+            ),
+          ),
+        ],
       ),
       body: Column(
         children: [
@@ -340,7 +359,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       } else if (bmi > 25.0 && bmi < 29.9) {
                         weightStatus = "	Overweight";
                         textColor = Colors.orangeAccent;
-                        text = "Your body id overweight keep doing workout.";
+                        text = "Your body is overweight keep doing workout.";
                       } else {
                         weightStatus = "Obesity";
                         textColor = Colors.redAccent;

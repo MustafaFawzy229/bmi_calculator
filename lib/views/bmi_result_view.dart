@@ -71,6 +71,7 @@ class _bmiResultViewState extends State<bmiResultView> {
                     style: const TextStyle(
                       fontSize: 20,
                       color: Colors.white,
+                      fontWeight: FontWeight.w500,
                     ),
                   ),
                 ],
